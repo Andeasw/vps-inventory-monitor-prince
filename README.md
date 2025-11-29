@@ -111,6 +111,7 @@ services:
 | `SEL_CARD` | CSS selector for the product card. | `.card.cartitem` |
 | `SEL_NAME` | CSS selector for product name inside card. | `h4` |
 | `SEL_INVENTORY` | CSS selector for inventory text. | `p.card-text` |
+| `ENABLE_DOCKERHUB` | Build a switch. |  `true` |
 | `DOCKER_USERNAME` | Your User Name. | - |
 | `DOCKER_PASSWORD` | Your User Token. | - |
 
