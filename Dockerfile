@@ -1,31 +1,32 @@
-# Build Stage
+# Base Image
 FROM node:20-alpine
 
-# Label Info
+# Metadata
 LABEL maintainer="Prince"
-LABEL description="VPS Inventory Monitor Service"
+LABEL version="0.0.1"
+LABEL description="Template Resource Monitor Service"
 
-# Set Timezone to Asia/Shanghai (CST)
+# Timezone Configuration (Force Asia/Shanghai)
 RUN apk add --no-cache tzdata \
     && cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
     && echo "Asia/Shanghai" > /etc/timezone \
     && apk del tzdata
 
-# Working Directory
+# Setup Directory
 WORKDIR /app
 
 # Install Dependencies
 COPY package.json ./
 RUN npm install --production --no-audit
 
-# Copy Source Code
+# Copy Application Code
 COPY index.js ./
 
-# Create Directories for Volume Mounting
+# Create Storage Directories
 RUN mkdir -p logs data
 
 # Expose Health Check Port
-EXPOSE 3000
+EXPOSE 2996
 
-# Start Application
+# Start Command
 CMD ["npm", "start"]
